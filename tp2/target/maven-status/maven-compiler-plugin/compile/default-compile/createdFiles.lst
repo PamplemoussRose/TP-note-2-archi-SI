@@ -1,2 +1,15 @@
+fr\univtours\polytech\tp2\business\MeteoBusinessImpl.class
+fr\univtours\polytech\tp2\model\meteo\WsMeteoResult.class
+fr\univtours\polytech\tp2\servlet\MeteoServlet.class
 fr\univtours\polytech\tp2\JakartaRestConfiguration.class
+fr\univtours\polytech\tp2\model\meteo\Clouds.class
+fr\univtours\polytech\tp2\rest\WebApp.class
 fr\univtours\polytech\tp2\resources\JakartaEE10Resource.class
+fr\univtours\polytech\tp2\model\meteo\Sys.class
+fr\univtours\polytech\tp2\business\MeteoBusiness.class
+fr\univtours\polytech\tp2\dao\MeteoDao.class
+fr\univtours\polytech\tp2\model\meteo\Main.class
+fr\univtours\polytech\tp2\dao\MeteoDaoImpl.class
+fr\univtours\polytech\tp2\model\meteo\Wind.class
+fr\univtours\polytech\tp2\model\meteo\Weather.class
+fr\univtours\polytech\tp2\model\meteo\Coord.class
