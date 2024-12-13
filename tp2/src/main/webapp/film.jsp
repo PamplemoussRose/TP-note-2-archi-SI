@@ -23,8 +23,10 @@
                         <th>Acteur</th>
                         <th>Affiche</th>
                         <th>Sortie</th>
+                        <th>Baisser</th>
                         <th>Note</th>
-                        <th>Modifier la note</th>
+                        <th>Augmenter</th>
+                        <th>Trailer</th>
                     </tr>
                     <c:forEach items="${requestScope.FILM_LIST}" var="film">
                         <tr>
@@ -32,6 +34,13 @@
                             <td>${film.acteur}</td>
                             <td><img src="${film.image}" alt="Image du film" style="width: 100px; height: auto;" /></td>
                             <td>${film.sortie}</td>
+                            <td class="actions">
+                                <form action="film" method="post" style="display:inline;">
+                                    <input type="hidden" name="id" value="${film.id}" />
+                                    <input type="hidden" name="action" value="diminuer" />
+                                    <button type="submit">-</button>
+                                </form>
+                            </td>
                             <c:if test="${film.note != 0}">
                                 <td>${film.note}</td>
                             </c:if>
@@ -44,11 +53,9 @@
                                     <input type="hidden" name="action" value="augmenter" />
                                     <button type="submit">+</button>
                                 </form>
-                                <form action="film" method="post" style="display:inline;">
-                                    <input type="hidden" name="id" value="${film.id}" />
-                                    <input type="hidden" name="action" value="diminuer" />
-                                    <button type="submit">-</button>
-                                </form>
+                            </td>
+                            <td>
+                                <button onclick="window.location.href='${film.trailer}';">Trailer</button>
                             </td>
                         </tr>
                     </c:forEach>

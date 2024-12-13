@@ -18,6 +18,7 @@ public class FilmBean {
     private String acteur;
     private Integer sortie;
     private String image;
+    private String trailer;
 
     public int getId() {
         return id;
@@ -65,6 +66,14 @@ public class FilmBean {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getTrailer() {
+        return trailer;
+    }
+
+    public void setTrailer(String trailer) {
+        this.trailer = trailer;
     }
 
 }

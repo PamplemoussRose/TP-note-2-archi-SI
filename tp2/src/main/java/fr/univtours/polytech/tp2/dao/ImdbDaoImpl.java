@@ -15,6 +15,8 @@ public class ImdbDaoImpl implements ImdbDao{
 
     private static final String URI = "https://imdb.iamidiotareyoutoo.com/search?"; 
 
+    private static final String URITrailer = "curl https://imdb.iamidiotareyoutoo.com/media/";
+
     @Override
     public List<Description> getFilms(String search) {
         Client client = ClientBuilder.newClient();

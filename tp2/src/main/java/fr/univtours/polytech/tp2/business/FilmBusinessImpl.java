@@ -39,6 +39,7 @@ public class FilmBusinessImpl implements Filmusiness {
             bean.setActeur(info.getActors());
             bean.setImage(info.getImgPoster());
             bean.setSortie(info.getYear());
+            bean.setTrailer("https://imdb.iamidiotareyoutoo.com/media/" + info.getImdbId());
         }
 
         return list;

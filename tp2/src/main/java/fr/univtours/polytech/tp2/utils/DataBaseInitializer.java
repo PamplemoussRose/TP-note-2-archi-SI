@@ -33,7 +33,7 @@ public class DataBaseInitializer {
         FilmBean bean4 = insertBeanInDB(title4, 4);
         testBusiness.addFilm(bean4);
 
-        String title5 = "Star Wars";
+        String title5 = "Star Wars la menace fantome";
         FilmBean bean5 = insertBeanInDB(title5, 5);
         testBusiness.addFilm(bean5);
 
