@@ -13,30 +13,27 @@ public class TestBean {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String nom;
-    private String prenom;
-
+    private String TITLE;
+    private Integer NOTE;
+    
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
-
-    public String getNom() {
-        return nom;
+    public String getTITLE() {
+        return TITLE;
+    }
+    public void setTITLE(String tITLE) {
+        TITLE = tITLE;
+    }
+    public Integer getNOTE() {
+        return NOTE;
+    }
+    public void setNOTE(Integer nOTE) {
+        NOTE = nOTE;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public String getPrenom() {
-        return prenom;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
-    }
+    
 }
