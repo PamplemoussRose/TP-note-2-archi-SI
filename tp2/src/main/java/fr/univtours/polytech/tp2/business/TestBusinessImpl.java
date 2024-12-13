@@ -11,6 +11,9 @@ public class TestBusinessImpl implements TestBusiness {
     @Inject
     private TestDao testDao;
 
+    @Inject
+    private ImdbBusiness imdbBusiness;
+
     @Override
     public void addTest(TestBean bean) {
         this.testDao.addTest(bean);
@@ -18,20 +21,34 @@ public class TestBusinessImpl implements TestBusiness {
 
     @Override
     public List<TestBean> getTests(boolean desc, String note) {
+        List<TestBean> list = null;
+
         if (desc && note != null) {
-            return this.testDao.getTests(desc, note);
+            list = this.testDao.getTests(desc, note);
         } else if (desc) {
-            return this.testDao.getTests(desc);
+            list = this.testDao.getTests(desc);
         } else if (note != null) {
-            return this.testDao.getTests(note);
+            list = this.testDao.getTests(note);
         } else {
-            return this.testDao.getTests();
+            list = this.testDao.getTests();
         }
+
+        for (TestBean bean : list) {
+            bean.setActeur(this.imdbBusiness.getFilm(bean.getTitle()).getActors());
+            bean.setImage(this.imdbBusiness.getFilm(bean.getTitle()).getImgPoster());
+            bean.setSortie(this.imdbBusiness.getFilm(bean.getTitle()).getYear());
+        }
+
+        return list;
     }
 
     @Override
     public TestBean getTest(int id) {
-        return this.testDao.getTestById(id);
+        TestBean bean = this.testDao.getTestById(id);
+        bean.setActeur(this.imdbBusiness.getFilm(bean.getTitle()).getActors());
+        bean.setImage(this.imdbBusiness.getFilm(bean.getTitle()).getImgPoster());
+        bean.setSortie(this.imdbBusiness.getFilm(bean.getTitle()).getYear());
+        return bean;
     }
 
     @Override
@@ -56,7 +73,7 @@ public class TestBusinessImpl implements TestBusiness {
         } else {
             if (bean.getNote() == 1) {
                 return;
-            }   
+            }
             bean.setNote(bean.getNote() - 1);
         }
         this.testDao.updateTest(bean);
