@@ -7,6 +7,11 @@
             <meta charset="ISO-8859-1">
             <title>Les films</title>
             <link rel="stylesheet" href="styles.css">
+            <style>
+                .hidden {
+                    display: none;
+                }
+            </style>
         </head>
 
         <body>
@@ -23,13 +28,15 @@
                     <c:forEach items="${requestScope.FILM_LIST}" var="film">
                         <tr>
                             <td>${film.title}</td>
-                            <td>${film.note}</td>
                             <td>${film.acteur}</td>
                             <td><img src="${film.image}" alt="Image du film" style="width: 100px; height: auto;" /></td>
                             <td>${film.sortie}</td>
+                            <td>${film.note}</td>
+                            <td class="hidden">${film.id}</td>
                         </tr>
                     </c:forEach>
                 </table>
             </section>
         </body>
+
         </html>

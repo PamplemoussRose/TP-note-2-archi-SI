@@ -29,23 +29,4 @@ public class MeteoServlet extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("film.jsp");
         dispatcher.forward(request, response);
     }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        String action = request.getParameter("action");
-        String title = request.getParameter("title"); // Le titre du film concerné
-
-        if ("increase".equals(action)) {
-            // Augmenter la note
-            this.business.updateNote(title, 1);
-        } else if ("decrease".equals(action)) {
-            // Diminuer la note
-            this.business.updateNote(title, -1);
-        }
-
-        // Redirection après traitement
-        response.sendRedirect("meteo");
-    }
-
 }
