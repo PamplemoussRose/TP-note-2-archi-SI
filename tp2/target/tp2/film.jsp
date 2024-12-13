@@ -25,7 +25,7 @@
                             <td>${film.title}</td>
                             <td>${film.note}</td>
                             <td>${film.acteur}</td>
-                            <td>${film.image}</td>
+                            <td><img src="${film.image}" alt="Image du film" style="width: 100px; height: auto;" /></td>
                             <td>${film.sortie}</td>
                         </tr>
                     </c:forEach>
