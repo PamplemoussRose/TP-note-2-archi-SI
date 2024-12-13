@@ -20,10 +20,10 @@
                 <table border=1>
                     <tr style="background-color: lightgray;">
                         <th>Titre</th>
-                        <th>Note</th>
+                        <th>Sortie</th>
                         <th>Acteur</th>
                         <th>Affiche</th>
-                        <th>Sortie</th>
+                        <th>Note</th>
                     </tr>
                     <c:forEach items="${requestScope.FILM_LIST}" var="film">
                         <tr>
