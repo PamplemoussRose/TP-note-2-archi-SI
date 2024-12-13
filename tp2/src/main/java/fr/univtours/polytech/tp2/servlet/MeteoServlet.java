@@ -23,7 +23,7 @@ public class MeteoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        List<TestBean> list = this.business.getTests(true);
+        List<TestBean> list = this.business.getTests(true, null);
 
         request.setAttribute("FILM_LIST", list);
         RequestDispatcher dispatcher = request.getRequestDispatcher("film.jsp");

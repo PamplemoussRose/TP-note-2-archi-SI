@@ -1,5 +1,6 @@
 package fr.univtours.polytech.tp2.utils;
 
+import fr.univtours.polytech.tp2.business.ImdbBusiness;
 import fr.univtours.polytech.tp2.business.TestBusiness;
 import fr.univtours.polytech.tp2.model.TestBean;
 import jakarta.annotation.PostConstruct;
@@ -14,31 +15,42 @@ public class DataBaseInitializer {
     @Inject
     private TestBusiness testBusiness;
 
+    @Inject
+    private ImdbBusiness imdbBusiness;
+
     @PostConstruct
     public void init() {
 
-        TestBean bean1 = insertBeanInDB(1, "a");
+        String title1 = "Le cinquieme element";
+        TestBean bean1 = insertBeanInDB(title1, 3, imdbBusiness.getFilm(title1).getActors(), imdbBusiness.getFilm(title1).getYear(), imdbBusiness.getFilm(title1).getImgPoster());
         testBusiness.addTest(bean1);
 
-        TestBean bean2 = insertBeanInDB(1, "b");
+        String title2 = "Le parrain";
+        TestBean bean2 = insertBeanInDB(title2, 2, imdbBusiness.getFilm(title2).getActors(), imdbBusiness.getFilm(title2).getYear(), imdbBusiness.getFilm(title2).getImgPoster());
         testBusiness.addTest(bean2);
 
-        TestBean bean3 = insertBeanInDB(1, "c");
+        String title3 = "Apocalypse Now";
+        TestBean bean3 = insertBeanInDB(title3, 3, imdbBusiness.getFilm(title3).getActors(), imdbBusiness.getFilm(title3).getYear(), imdbBusiness.getFilm(title3).getImgPoster());
         testBusiness.addTest(bean3);
 
-        TestBean bean4 = insertBeanInDB(1, "d");
+        String title4 = "Le seigneur des anneaux";
+        TestBean bean4 = insertBeanInDB(title4, 4, imdbBusiness.getFilm(title4).getActors(), imdbBusiness.getFilm(title4).getYear(), imdbBusiness.getFilm(title4).getImgPoster());
         testBusiness.addTest(bean4);
 
-        TestBean bean5 = insertBeanInDB(1, "e");
+        String title5 = "Star Wars";
+        TestBean bean5 = insertBeanInDB(title5, 5, imdbBusiness.getFilm(title5).getActors(), imdbBusiness.getFilm(title5).getYear(), imdbBusiness.getFilm(title5).getImgPoster());
         testBusiness.addTest(bean5);
 
     }
 
-    private TestBean insertBeanInDB(Integer note, String title) {
+    private TestBean insertBeanInDB(String title, Integer note, String acteur, Integer sortie, String image) {
         TestBean bean = new TestBean();
 
-        bean.setNOTE(note);
-        bean.setTITLE(title);
+        bean.setNote(note);
+        bean.setTitle(title);
+        bean.setActeur(acteur);
+        bean.setSortie(sortie);
+        bean.setImage(image);
 
         return bean;
     }

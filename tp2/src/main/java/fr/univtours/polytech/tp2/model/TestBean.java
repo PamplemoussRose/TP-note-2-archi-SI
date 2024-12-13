@@ -13,27 +13,58 @@ public class TestBean {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String TITLE;
-    private Integer NOTE;
-    
+    private String title;
+    private Integer note;
+    private String acteur;
+    private Integer sortie;
+    private String image;
+
     public int getId() {
         return id;
     }
+
     public void setId(int id) {
         this.id = id;
     }
-    public String getTITLE() {
-        return TITLE;
-    }
-    public void setTITLE(String tITLE) {
-        TITLE = tITLE;
-    }
-    public Integer getNOTE() {
-        return NOTE;
-    }
-    public void setNOTE(Integer nOTE) {
-        NOTE = nOTE;
+
+    public String getTitle() {
+        return title;
     }
 
-    
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Integer getNote() {
+        return note;
+    }
+
+    public void setNote(Integer note) {
+        this.note = note;
+    }
+
+    public String getActeur() {
+        return acteur;
+    }
+
+    public void setActeur(String acteur) {
+        this.acteur = acteur;
+    }
+
+    public Integer getSortie() {
+        return sortie;
+    }
+
+    public void setSortie(Integer sortie) {
+        this.sortie = sortie;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
 }

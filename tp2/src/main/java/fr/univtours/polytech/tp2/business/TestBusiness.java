@@ -8,7 +8,7 @@ public interface TestBusiness {
 
     public void addTest(TestBean bean);
 
-    public List<TestBean> getTests(boolean desc);
+    public List<TestBean> getTests(boolean desc, String note);
 
     public TestBean getTest(int id);
 

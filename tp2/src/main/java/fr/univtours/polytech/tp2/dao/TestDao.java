@@ -11,6 +11,10 @@ public interface TestDao {
     public List<TestBean> getTests();
 
     public List<TestBean> getTests(boolean desc);
+    
+    public List<TestBean> getTests(String note);
+    
+    public List<TestBean> getTests(boolean desc, String note);
 
     public TestBean getTestById(int id);
 

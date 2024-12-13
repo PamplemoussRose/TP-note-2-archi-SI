@@ -19,17 +19,31 @@ public class TestDaoImpl implements TestDao {
         em.persist(test);
     }
 
-    @SuppressWarnings("unchecked")
     @Override
+    @SuppressWarnings("unchecked")
     public List<TestBean> getTests() {
         Query request = em.createQuery("select l from TestBean l");
         return request.getResultList();
     }
 
-    @SuppressWarnings("unchecked")
     @Override
+    @SuppressWarnings("unchecked")
     public List<TestBean> getTests(boolean desc) {
         Query request = em.createQuery("select l from TestBean l order by id desc");
+        return request.getResultList();
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<TestBean> getTests(String note) {
+        Query request = em.createQuery("select l from TestBean l where l.note = "+note);
+        return request.getResultList();
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<TestBean> getTests(boolean desc, String note) {
+        Query request = em.createQuery("select l from TestBean l where l.note = "+note+" order by id desc");
         return request.getResultList();
     }
 

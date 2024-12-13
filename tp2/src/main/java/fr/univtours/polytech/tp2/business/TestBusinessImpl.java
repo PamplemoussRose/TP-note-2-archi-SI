@@ -17,9 +17,13 @@ public class TestBusinessImpl implements TestBusiness {
     }
 
     @Override
-    public List<TestBean> getTests(boolean desc) {
-        if (desc) {
+    public List<TestBean> getTests(boolean desc, String note) {
+        if (desc && note != null) {
+            return this.testDao.getTests(desc, note);
+        } else if (desc) {
             return this.testDao.getTests(desc);
+        } else if (note != null) {
+            return this.testDao.getTests(note);
         } else {
             return this.testDao.getTests();
         }
