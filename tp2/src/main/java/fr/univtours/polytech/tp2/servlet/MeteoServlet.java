@@ -1,9 +1,13 @@
 package fr.univtours.polytech.tp2.servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import fr.univtours.polytech.tp2.business.MeteoBusiness;
+import fr.univtours.polytech.tp2.business.TestBusiness;
+import fr.univtours.polytech.tp2.model.TestBean;
 import jakarta.inject.Inject;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -14,21 +18,17 @@ import jakarta.servlet.http.HttpServletResponse;
 public class MeteoServlet extends HttpServlet {
 
     @Inject
-    private MeteoBusiness meteoBusiness;
+    private TestBusiness business;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // Coordonnées de Tours
-        String lat = "47.383333";
-        String lon = "0.683333";
-        // JSON contenant les informations météo
-        String meteo = this.meteoBusiness.getMeteo(lat, lon);
-        // Ajout du JSON à la réponse
-        request.setAttribute("meteo", meteo);
-        // Redirection vers la page JSP
-        request.getRequestDispatcher("meteo.jsp").forward(request, response);
-        
+
+        List<TestBean> list = this.business.getTests(true);
+
+        request.setAttribute("FILM_LIST", list);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("film.jsp");
+        dispatcher.forward(request, response);
     }
 
 }
