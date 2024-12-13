@@ -36,9 +36,9 @@ public class MeteoServlet extends HttpServlet {
         String action = request.getParameter("action");
         int id = Integer.parseInt(request.getParameter("id"));
 
-        if ("increase".equals(action)) {
+        if ("augmenter".equals(action)) {
             this.business.updateNote(id, true);
-        } else if ("decrease".equals(action)) {
+        } else if ("diminuer".equals(action)) {
             this.business.updateNote(id, false);
         }
 

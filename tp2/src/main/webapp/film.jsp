@@ -24,6 +24,7 @@
                         <th>Affiche</th>
                         <th>Sortie</th>
                         <th>Note</th>
+                        <th>Modifier la note</th>
                     </tr>
                     <c:forEach items="${requestScope.FILM_LIST}" var="film">
                         <tr>
@@ -32,7 +33,18 @@
                             <td><img src="${film.image}" alt="Image du film" style="width: 100px; height: auto;" /></td>
                             <td>${film.sortie}</td>
                             <td>${film.note}</td>
-                            <td class="hidden">${film.id}</td>
+                            <td class="actions">
+                                <form action="meteo" method="post" style="display:inline;">
+                                    <input type="hidden" name="id" value="${film.id}" />
+                                    <input type="hidden" name="action" value="augmenter" />
+                                    <button type="submit">Augmenter</button>
+                                </form>
+                                <form action="meteo" method="post" style="display:inline;">
+                                    <input type="hidden" name="id" value="${film.id}" />
+                                    <input type="hidden" name="action" value="diminuer" />
+                                    <button type="submit">Diminuer</button>
+                                </form>
+                            </td>
                         </tr>
                     </c:forEach>
                 </table>

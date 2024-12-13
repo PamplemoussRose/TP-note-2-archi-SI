@@ -4,6 +4,7 @@ import java.util.List;
 
 import fr.univtours.polytech.tp2.dao.TestDao;
 import fr.univtours.polytech.tp2.model.TestBean;
+import fr.univtours.polytech.tp2.model.film.Description;
 import jakarta.inject.Inject;
 
 public class TestBusinessImpl implements TestBusiness {
@@ -34,9 +35,10 @@ public class TestBusinessImpl implements TestBusiness {
         }
 
         for (TestBean bean : list) {
-            bean.setActeur(this.imdbBusiness.getFilm(bean.getTitle()).getActors());
-            bean.setImage(this.imdbBusiness.getFilm(bean.getTitle()).getImgPoster());
-            bean.setSortie(this.imdbBusiness.getFilm(bean.getTitle()).getYear());
+            Description info = this.imdbBusiness.getFilm(bean.getTitle());
+            bean.setActeur(info.getActors());
+            bean.setImage(info.getImgPoster());
+            bean.setSortie(info.getYear());
         }
 
         return list;
@@ -68,10 +70,16 @@ public class TestBusinessImpl implements TestBusiness {
         if (up) {
             if (bean.getNote() == 5) {
                 return;
+            } else if (bean.getNote() == 0) {
+                bean.setNote(1);
+                return;
             }
             bean.setNote(bean.getNote() + 1);
         } else {
             if (bean.getNote() == 1) {
+                return;
+            } else if (bean.getNote() == 0) {
+                bean.setNote(5);
                 return;
             }
             bean.setNote(bean.getNote() - 1);
