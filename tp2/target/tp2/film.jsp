@@ -32,17 +32,22 @@
                             <td>${film.acteur}</td>
                             <td><img src="${film.image}" alt="Image du film" style="width: 100px; height: auto;" /></td>
                             <td>${film.sortie}</td>
-                            <td>${film.note}</td>
+                            <c:if test="${film.note != 0}">
+                                <td>${film.note}</td>
+                            </c:if>
+                            <c:if test="${film.note == 0}">
+                                <td> </td>
+                            </c:if>
                             <td class="actions">
                                 <form action="meteo" method="post" style="display:inline;">
                                     <input type="hidden" name="id" value="${film.id}" />
                                     <input type="hidden" name="action" value="augmenter" />
-                                    <button type="submit">Augmenter</button>
+                                    <button type="submit">+</button>
                                 </form>
                                 <form action="meteo" method="post" style="display:inline;">
                                     <input type="hidden" name="id" value="${film.id}" />
                                     <input type="hidden" name="action" value="diminuer" />
-                                    <button type="submit">Diminuer</button>
+                                    <button type="submit">-</button>
                                 </form>
                             </td>
                         </tr>

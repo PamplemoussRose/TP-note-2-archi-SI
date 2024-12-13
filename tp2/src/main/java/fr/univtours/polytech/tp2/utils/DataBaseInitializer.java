@@ -37,6 +37,10 @@ public class DataBaseInitializer {
         TestBean bean5 = insertBeanInDB(title5, 5);
         testBusiness.addTest(bean5);
 
+        String title6 = "Cars";
+        TestBean bean6 = insertBeanInDB(title6, 0);
+        testBusiness.addTest(bean6);
+
     }
 
     private TestBean insertBeanInDB(String title, Integer note) {

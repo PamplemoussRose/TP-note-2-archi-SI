@@ -72,17 +72,17 @@ public class TestBusinessImpl implements TestBusiness {
                 return;
             } else if (bean.getNote() == 0) {
                 bean.setNote(1);
-                return;
+            } else {
+                bean.setNote(bean.getNote() + 1);
             }
-            bean.setNote(bean.getNote() + 1);
         } else {
             if (bean.getNote() == 1) {
                 return;
             } else if (bean.getNote() == 0) {
                 bean.setNote(5);
-                return;
+            } else {
+                bean.setNote(bean.getNote() - 1);
             }
-            bean.setNote(bean.getNote() - 1);
         }
         this.testDao.updateTest(bean);
     }
