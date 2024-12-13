@@ -8,7 +8,7 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @XmlRootElement
-public class TestBean {
+public class FilmBean {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

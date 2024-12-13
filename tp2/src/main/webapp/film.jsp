@@ -39,12 +39,12 @@
                                 <td> </td>
                             </c:if>
                             <td class="actions">
-                                <form action="meteo" method="post" style="display:inline;">
+                                <form action="film" method="post" style="display:inline;">
                                     <input type="hidden" name="id" value="${film.id}" />
                                     <input type="hidden" name="action" value="augmenter" />
                                     <button type="submit">+</button>
                                 </form>
-                                <form action="meteo" method="post" style="display:inline;">
+                                <form action="film" method="post" style="display:inline;">
                                     <input type="hidden" name="id" value="${film.id}" />
                                     <input type="hidden" name="action" value="diminuer" />
                                     <button type="submit">-</button>

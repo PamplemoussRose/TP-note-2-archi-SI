@@ -2,39 +2,39 @@ package fr.univtours.polytech.tp2.business;
 
 import java.util.List;
 
-import fr.univtours.polytech.tp2.dao.TestDao;
-import fr.univtours.polytech.tp2.model.TestBean;
+import fr.univtours.polytech.tp2.dao.FilmDao;
+import fr.univtours.polytech.tp2.model.FilmBean;
 import fr.univtours.polytech.tp2.model.film.Description;
 import jakarta.inject.Inject;
 
-public class TestBusinessImpl implements TestBusiness {
+public class FilmBusinessImpl implements Filmusiness {
 
     @Inject
-    private TestDao testDao;
+    private FilmDao testDao;
 
     @Inject
     private ImdbBusiness imdbBusiness;
 
     @Override
-    public void addTest(TestBean bean) {
-        this.testDao.addTest(bean);
+    public void addFilm(FilmBean bean) {
+        this.testDao.addFilm(bean);
     }
 
     @Override
-    public List<TestBean> getTests(boolean desc, String note) {
-        List<TestBean> list = null;
+    public List<FilmBean> getFilms(boolean desc, String note) {
+        List<FilmBean> list = null;
 
         if (desc && note != null) {
-            list = this.testDao.getTests(desc, note);
+            list = this.testDao.getFilms(desc, note);
         } else if (desc) {
-            list = this.testDao.getTests(desc);
+            list = this.testDao.getFilms(desc);
         } else if (note != null) {
-            list = this.testDao.getTests(note);
+            list = this.testDao.getFilms(note);
         } else {
-            list = this.testDao.getTests();
+            list = this.testDao.getFilms();
         }
 
-        for (TestBean bean : list) {
+        for (FilmBean bean : list) {
             Description info = this.imdbBusiness.getFilm(bean.getTitle());
             bean.setActeur(info.getActors());
             bean.setImage(info.getImgPoster());
@@ -45,8 +45,8 @@ public class TestBusinessImpl implements TestBusiness {
     }
 
     @Override
-    public TestBean getTest(int id) {
-        TestBean bean = this.testDao.getTestById(id);
+    public FilmBean getFilm(int id) {
+        FilmBean bean = this.testDao.getFilmById(id);
         bean.setActeur(this.imdbBusiness.getFilm(bean.getTitle()).getActors());
         bean.setImage(this.imdbBusiness.getFilm(bean.getTitle()).getImgPoster());
         bean.setSortie(this.imdbBusiness.getFilm(bean.getTitle()).getYear());
@@ -54,19 +54,19 @@ public class TestBusinessImpl implements TestBusiness {
     }
 
     @Override
-    public void updateTest(TestBean bean) {
-        this.testDao.updateTest(bean);
+    public void updateFilm(FilmBean bean) {
+        this.testDao.updateFilm(bean);
     }
 
     @Override
-    public void deleteTest(int id) {
-        TestBean bean = this.testDao.getTestById(id);
-        this.testDao.deleteTest(bean);
+    public void deleteFilm(int id) {
+        FilmBean bean = this.testDao.getFilmById(id);
+        this.testDao.deleteFilm(bean);
     }
 
     @Override
     public void updateNote(int id, boolean up) {
-        TestBean bean = this.testDao.getTestById(id);
+        FilmBean bean = this.testDao.getFilmById(id);
         if (up) {
             if (bean.getNote() == 5) {
                 return;
@@ -84,7 +84,7 @@ public class TestBusinessImpl implements TestBusiness {
                 bean.setNote(bean.getNote() - 1);
             }
         }
-        this.testDao.updateTest(bean);
+        this.testDao.updateFilm(bean);
     }
 
 }

@@ -3,8 +3,8 @@ package fr.univtours.polytech.tp2.servlet;
 import java.io.IOException;
 import java.util.List;
 
-import fr.univtours.polytech.tp2.business.TestBusiness;
-import fr.univtours.polytech.tp2.model.TestBean;
+import fr.univtours.polytech.tp2.business.Filmusiness;
+import fr.univtours.polytech.tp2.model.FilmBean;
 import jakarta.inject.Inject;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -13,17 +13,17 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "meteoServlet", urlPatterns ={"/meteo"})
-public class MeteoServlet extends HttpServlet {
+@WebServlet(name = "filmServlet", urlPatterns ={"/film"})
+public class FilmServlet extends HttpServlet {
 
     @Inject
-    private TestBusiness business;
+    private Filmusiness business;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        List<TestBean> list = this.business.getTests(false, null);
+        List<FilmBean> list = this.business.getFilms(false, null);
 
         request.setAttribute("FILM_LIST", list);
         RequestDispatcher dispatcher = request.getRequestDispatcher("film.jsp");
@@ -42,6 +42,6 @@ public class MeteoServlet extends HttpServlet {
             this.business.updateNote(id, false);
         }
 
-        response.sendRedirect("meteo");
+        response.sendRedirect("film");
     }
 }
