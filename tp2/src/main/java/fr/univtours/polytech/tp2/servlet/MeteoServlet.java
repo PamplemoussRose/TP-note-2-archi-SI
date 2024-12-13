@@ -3,7 +3,6 @@ package fr.univtours.polytech.tp2.servlet;
 import java.io.IOException;
 import java.util.List;
 
-import fr.univtours.polytech.tp2.business.MeteoBusiness;
 import fr.univtours.polytech.tp2.business.TestBusiness;
 import fr.univtours.polytech.tp2.model.TestBean;
 import jakarta.inject.Inject;
