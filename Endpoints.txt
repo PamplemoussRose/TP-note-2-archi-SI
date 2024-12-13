@@ -1,0 +1,31 @@
+Notre API REST est configurée pour répondre aux requêtes suivantes :
+
+VERBE GET :
+- localhost:8080/tp2/api/test
+- localhost:8080/tp2/api/test/{id}
+
+VERBE POST : 
+- localhost:8080/tp2/api/test
+avec un body tel que :
+{
+    "title": "Le sixieme element",
+    "note": 3,
+}
+
+VERBE PUT : 
+- localhost:8080/tp2/api/test/{id}
+avec un body tel que
+{
+    "title": "Le sixieme element",
+    "note": 4,
+}
+
+VERBE PATCH : 
+- localhost:8080/tp2/api/test/{id}
+avec un body tel que
+{
+    "note": 2,
+}
+
+VERBE DELETE : 
+- localhost:8080/tp2/api/test/{id}
