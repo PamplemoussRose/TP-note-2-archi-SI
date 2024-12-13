@@ -17,30 +17,16 @@ public class DataBaseInitializer {
     @PostConstruct
     public void init() {
 
-        /*TestBean bean1 = insertBeanInDB("aa", "a");
+        TestBean bean1 = insertBeanInDB(1, "a");
         testBusiness.addTest(bean1);
 
-        TestBean bean2 = insertBeanInDB("bb", "b");
-        testBusiness.addTest(bean2);
-
-        TestBean bean3 = insertBeanInDB("cc", "c");
-        testBusiness.addTest(bean3);
-
-        TestBean bean4 = insertBeanInDB("dd", "d");
-        testBusiness.addTest(bean4);
-
-        TestBean bean5 = insertBeanInDB(, "e");
-        testBusiness.addTest(bean5);
-
-        TestBean bean6 = insertBeanInDB("ff", "f");
-        testBusiness.addTest(bean6);*/ 
     }
 
-    private TestBean insertBeanInDB(Integer nom, String prenom) {
+    private TestBean insertBeanInDB(Integer note, String title) {
         TestBean bean = new TestBean();
 
-        bean.setNOTE(nom);
-        bean.setTITLE(prenom);
+        bean.setNOTE(note);
+        bean.setTITLE(title);
 
         return bean;
     }
