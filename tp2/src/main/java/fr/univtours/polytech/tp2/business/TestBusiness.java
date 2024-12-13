@@ -15,4 +15,6 @@ public interface TestBusiness {
     public void updateTest(TestBean bean);
 
     public void deleteTest(int id);
+
+    public void updateNote(int id, boolean up);
 }

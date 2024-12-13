@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/meteo")
+@WebServlet(name = "meteoServlet", urlPatterns ={"/meteo"})
 public class MeteoServlet extends HttpServlet {
 
     @Inject
@@ -23,10 +23,25 @@ public class MeteoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        List<TestBean> list = this.business.getTests(true, null);
+        List<TestBean> list = this.business.getTests(false, null);
 
         request.setAttribute("FILM_LIST", list);
         RequestDispatcher dispatcher = request.getRequestDispatcher("film.jsp");
         dispatcher.forward(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String action = request.getParameter("action");
+        int id = Integer.parseInt(request.getParameter("id"));
+
+        if ("increase".equals(action)) {
+            this.business.updateNote(id, true);
+        } else if ("decrease".equals(action)) {
+            this.business.updateNote(id, false);
+        }
+
+        response.sendRedirect("meteo");
     }
 }

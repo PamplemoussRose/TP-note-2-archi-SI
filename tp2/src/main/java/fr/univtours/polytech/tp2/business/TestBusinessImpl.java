@@ -45,4 +45,21 @@ public class TestBusinessImpl implements TestBusiness {
         this.testDao.deleteTest(bean);
     }
 
+    @Override
+    public void updateNote(int id, boolean up) {
+        TestBean bean = this.testDao.getTestById(id);
+        if (up) {
+            if (bean.getNote() == 5) {
+                return;
+            }
+            bean.setNote(bean.getNote() + 1);
+        } else {
+            if (bean.getNote() == 1) {
+                return;
+            }   
+            bean.setNote(bean.getNote() - 1);
+        }
+        this.testDao.updateTest(bean);
+    }
+
 }
